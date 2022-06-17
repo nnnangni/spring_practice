@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jbfg.mybatisguestbook.dao.IGuestbookDAO">
+
+<!--public List<Guestbook> getAll();
+	public Guestbook getGuestbook(int seq);
+	public int insert(Guestbook guestbook);
+	public int update(Guestbook guestbook);
+	public int delete(int seq);  -->	
+
+	<select id="getAll" resultType="com.jbfg.mybatisguestbook.dto.Guestbook">
+		select * from guestbook 
+	</select>
+	
+
+	<select id="getGuestbook" resultType="com.jbfg.mybatisguestbook.dto.Guestbook">
+		select * from guestbook where seq=#{0}
+	</select>
+	
+	<insert id="insert" parameterType="com.jbfg.mybatisguestbook.dto.Guestbook">
+		insert into guestbook(title,content,username,regdate) value (#{title},#{content},#{username},now())
+	</insert>
+
+	<update id="update" parameterType="com.jbfg.mybatisguestbook.dto.Guestbook">
+		update guestbook set username=#{username}, title=#{title},content=#{content} where seq=#{seq}
+	</update>
+	
+	<delete id="delete">
+		delete from guestbook where seq=#{_seq}
+	</delete>
+	
+
+</mapper>
