@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css">
+    <title>홈페이지</title>
+</head>
+<body>
+    <h1>타임리프 예제 테이블</h1>
+    <table>
+        <thead> <tr><th>번호</th> <th>제목</th> <th>작성자</th> <th>날짜</th> </tr> </thead>
+        <tbody>
+            <tr th:object="${board}"> 
+            	<td><span th:text="*{no}">1</span></td> 
+            	<td><span th:text="*{title}"></span>테스트 제목 입니다.</td> 
+            	<td><span th:text="*{writer}"></span>이종민</td>
+            	 <td><span th:text="${#temporals.format(board.updateTime, 'yyyy-MM-dd HH:mm')}"></td> 
+            </tr>
+           
+        </tbody>
+    </table>
+</body>
+</html>
