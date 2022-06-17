@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+    
+<!-- 	public List<News> getAll();
+	public int addNews(News news);
+	public News getNews(int aid);
+	public int delNews(int aid); -->
+	
+	<mapper namespace="com.jbfg.news.dao.INewsDAO">
+		<!-- public List<News> getAll(); -->
+		<select id="getAll" resultType="com.jbfg.news.dto.News">
+			select * from news
+		</select>
+		
+
+		
+		<!-- public News getNews(int aid); -->
+		<select id="getNews" resultType="com.jbfg.news.dto.News">
+			select * from news where aid=#{aid}
+		</select>
+		
+		<!-- public int addNews(News news); -->
+		<insert id="addNews" parameterType="com.jbfg.news.dto.News">
+			insert into news(title, content, date) value(#{title},#{content},now())
+		</insert>
+		<!-- public int delNews(int aid); -->
+		<delete id="delNews">
+			delete from news where aid=#{aid}
+		</delete>
+	</mapper>
